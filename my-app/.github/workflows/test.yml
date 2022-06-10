@@ -1,0 +1,17 @@
+name: Maven test
+on:
+  pull_request:
+    types: [opened , synchronize , reopened ]
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Build
+        id: mavn-build
+        run: |
+          mvn clean deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.MAVENBUILD_PERSONALTOKEN }}
+
