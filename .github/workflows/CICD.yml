@@ -10,6 +10,7 @@ jobs:
       - name: Build
         id: mavn-build
         run: |
+          cd my-app
           mvn clean deploy
         env:
           GITHUB_TOKEN: ${{ secrets.MAVENBUILD_PERSONALTOKEN }}
